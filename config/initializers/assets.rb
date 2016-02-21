@@ -1,0 +1,9 @@
+Rails.application.config.assets.version = '1.0'
+Rails.application.config.assets.precompile += %w( p2.css )
+Rails.application.config.assets.precompile += %w( p3.css )
+Rails.application.config.assets.precompile += %w( upload.css )
+Rails.application.config.assets.precompile += %w( login.css )
+Rails.application.config.assets.precompile += %w( signup.css )
+Rails.application.config.assets.precompile += %w( accinfo.css )
+Rails.application.config.assets.precompile += %w( bootstrap.css )
+Rails.application.config.assets.precompile += %w( bootstrap-theme.css )

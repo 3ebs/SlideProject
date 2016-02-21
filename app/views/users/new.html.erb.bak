@@ -1,0 +1,22 @@
+
+<title>PDF Viewer | Sign up</title>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
+<div class="login">
+  <div class="container">
+    <div class="form" style="font-family:'Josefin Sans', sans-serif;">
+
+    <h1 style = "font-family:'Josefin Sans', sans-serif;">Sign up</h1>
+
+    <%= form_for(@user) do |f| %>
+      <%= f.text_field :first_name, :placeholder => "First name" %>
+      <%= f.text_field :last_name, :placeholder => "Last name" %>
+      <%= f.email_field :email, :placeholder => "Email" %>
+      <%= f.password_field :password, :placeholder => "Password" %>
+      <%= f.submit "Create an account", class: "btn-submit" %>
+    <% end %>
+
+  
+    </div>
+  </div>
+</div>

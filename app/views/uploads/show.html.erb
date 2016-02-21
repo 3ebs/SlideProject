@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uploader:</strong><%= User.find_by_id(@upload.user_id).first_name%><br>
+
+
+  <% @vaa= Slide.all%>
+  
+
+  <% @vaa.each do |slide| %>
+      <%if slide.upload_id== @upload.id %>
+        <%= image_tag "#{slide.url} "%>
+      <%end%>
+   <%end%>
+  <br><Br><br><br><br>
+ 
+</p>
+  <%= commontator_thread(@upload) 
+  %>
+
+<%= link_to 'Back', uploads_path %>
