@@ -20,13 +20,5 @@ class SlidesController < ApplicationController
         @comment = Comment.new
     end
     
-	def comment
-		commentable = Slide.find(params[:id])
-		comment = commentable.comment.create
-		comment.title = params[:title]
-		comment.comment = params[:comment]
-		comment.user = @current_user
-		comment.save
-		redirect_to page_url(commentable)
-	end
+	
 end

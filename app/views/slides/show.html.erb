@@ -1,17 +1,28 @@
             <h2>image preview</h2>
-            
+       <%= link_to 'previous',  preview_path((@slide.id)-1) %><br>
        <%= image_tag "#{@slide.url} "%>
-  	
+      <%= link_to 'next',  preview_path((@slide.id)+1) %><br>
+	
 <h1>Comments</h1>  
 
 <ul id="comments">  
+<% if ( @comments != nil )  %>
   <% @comments.each do |comment| %>  
+  <% if (comment.commentable_id == @slide.id) %>
     <li>  
-    <strong>Commentor:</strong><%= #  User.find_by_id(comment.user_id).first_name
-    %><br>
+     
+    <% if (comment.user_id == nil) %>
+        <strong>Commentor:</strong> Ananonumys
+    <% else %>
+        <strong>Commentor:</strong><%= User.find_by_id(comment.user_id ).first_name %>
+    <% end %>
     
-        <%=comment.title %>
-    <br><%= comment.comment %>
+        <br><%=comment.title %>
+        <br><%= comment.comment %>
+    <%end%>
+    
+<%end %>    
+        
     
     </li>  
   <% end %>  
@@ -27,7 +38,7 @@
     </li>  
     <li>  
       <%= label_tag :comment %>  
-      <%= text_area_tag :comment, :rows => 5 %>  
+      <%= text_area_tag :comment %>  
     </li>
     <li><%= submit_tag "Add comment" %></li>  
   </ul>  

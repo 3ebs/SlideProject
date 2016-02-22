@@ -3,4 +3,5 @@ class Slide < ActiveRecord::Base
         belongs_to :upload
         has_many :comments
   acts_as_commentable
+  
 end

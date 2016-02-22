@@ -6,6 +6,8 @@ def create
   if @user && @user.authenticate(params[:session][:password])
      session[:user_id] = @user.id
      session[:first_name] = @user.first_name
+     session[:last_name] = @user.last_name
+
       redirect_to '/uploads'
   else
     redirect_to '/login' 

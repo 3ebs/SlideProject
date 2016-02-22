@@ -4,7 +4,7 @@
 		<%= stylesheet_link_tag  'bootstrap-theme.css', media: 'all', 'data-turbolinks-track' => true %>	
 		<%= stylesheet_link_tag  'login.css', media: 'all', 'data-turbolinks-track' => true %>	
 		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
-		<title>PDF Viewer | Login</title>
+		<title>PDF Viewer | Log in</title>
 	</head>
 	<body>
 		<div class="container">
@@ -19,6 +19,9 @@
                           <%= f.password_field :password, :placeholder => "Password",class:"form-control" %> 
                           <%= f.submit "Log in", class: "btn btn-block btn-lg btn-danger" %>
                           <% end %>
+                          <div class="text-center incorrectness">
+                          	<h5>Email or Password is incorrect</h5>
+                          </div>
 		                </div>
 		            </div>
 		            <%= link_to "Create an account", signup_path, class:"text-center new-account" %>

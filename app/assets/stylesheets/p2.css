@@ -30,13 +30,13 @@
 }
 
 .nav.navbar-nav.navbar-left li a {
-    color: red;
+    color: white;
     font-size: 22px;
 	font-weight: bold;
 }
 
 .nav.navbar-nav.navbar-right li a {
-    color: red;
+    color: white;
     font-size: 15px;
     margin-right: 5px;
 }
@@ -53,6 +53,7 @@
 }
 
 body {
+    position:relative;
     padding-top: 80px;
     font-family: 'Josefin Sans', sans-serif;
     background-color: #f2f2f2;
@@ -66,10 +67,6 @@ IMG.displayed {
 
 .pdf_name {
 	text-align: center;
-    /*max-width: 100px;*/
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .choice {
@@ -77,7 +74,7 @@ IMG.displayed {
 }
 
 .pdf_border {
-	margin: auto;
+	margin-bottom: 20px;
 }
 
 .row_border {
@@ -91,4 +88,8 @@ IMG.displayed {
 .last-child {
     border-right: 1px solid white;
     border-left: 1px solid white;
+}
+.panel_ {
+    position:absolute;
+    bottom:0;
 }
