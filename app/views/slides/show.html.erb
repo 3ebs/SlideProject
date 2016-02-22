@@ -1,45 +1,115 @@
-            <h2>image preview</h2>
-       <%= link_to 'previous',  preview_path((@slide.id)-1) %><br>
-       <%= image_tag "#{@slide.url} "%>
-      <%= link_to 'next',  preview_path((@slide.id)+1) %><br>
-	
-<h1>Comments</h1>  
+<html>
+	<head>
+		
+		<%= stylesheet_link_tag  'bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag  'bootstrap-theme.css', media: 'all', 'data-turbolinks-track' => true %>	
+		<%= stylesheet_link_tag  'p4 css.css', media: 'all', 'data-turbolinks-track' => true %>
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+		<title>PDF Viewer | PDFName</title>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-inverse  navbar-fixed-top navbar-outer" role="navigation">
+					<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	  					<span class="icon-bar"></span>
+	  					<span class="icon-bar"></span>
+	  					<span class="icon-bar"></span>
+					</button>    
+					</div>
+					<div class="navbar-collapse collapse">
+	    			<ul class="nav navbar-nav navbar-left col-md-5">
+	        			<li><a href="/uploads"><img class="displayed" height="70" width="70" src="https://cdn4.iconfinder.com/data/icons/CS5/512/ACP_PDF%202_file_document.png" alt="WebSiteIcon"></a></li>
+	        			<li class="navbar_top_margin last-child"><a href="/uploads">PDF Viewer</a></li>
+	    			</ul>
 
-<ul id="comments">  
-<% if ( @comments != nil )  %>
-  <% @comments.each do |comment| %>  
-  <% if (comment.commentable_id == @slide.id) %>
-    <li>  
-     
-    <% if (comment.user_id == nil) %>
-        <strong>Commentor:</strong> Ananonumys
-    <% else %>
-        <strong>Commentor:</strong><%= User.find_by_id(comment.user_id ).first_name %>
-    <% end %>
-    
-        <br><%=comment.title %>
-        <br><%= comment.comment %>
-    <%end%>
-    
-<%end %>    
-        
-    
-    </li>  
-  <% end %>  
-</ul>  
 
-<h2>New Comment</h2>  
+	    			<div class="col-md-2">
+	  					<a href="<%= new_upload_path %>" class="btn btn-block btn-lg btn-success navbar_top_margin">Upload File</a>
+	  				</div>
+	    			<ul class="nav navbar-nav navbar-right col-md-5">
+	    				<li class="navbar-right"><%= link_to "Log Out", logout_path, method: "delete" %></li>
+	      				<li class="navbar-right last-child"><a href="#accountdetails"><%= session[:first_name] %></a></li>
+	    			</ul>
+	    		</div>
+			</nav>
+			<div class="bk_gnd_color">
+			<div class="row">
 
-<%= form_tag(controller: "comments", id: "#{@slide.id}", action:"create", method: "POST")  do %>
-  <ul class="formList">  
-    <li>  
-      <%= label_tag :title %>  
-      <%= text_field_tag :title %>  
-    </li>  
-    <li>  
-      <%= label_tag :comment %>  
-      <%= text_area_tag :comment %>  
-    </li>
-    <li><%= submit_tag "Add comment" %></li>  
-  </ul>  
-<% end %>
+				
+				<div class="col-md-1 arrow_margin">
+					<i class="fa fa-arrow-left fa-5x"><%= link_to 'previous',  preview_path((@slide.id)-1) %></i>
+				</div>
+				<div class="col-md-10 displayed">
+					<img width="100%" height="100%" src="<%= @slide.url %>" alt="Photo">
+				</div>	
+				<div class="col-md-1 arrow_margin">
+					<i class="fa fa-arrow-right fa-5x"><%= link_to 'next',  preview_path((@slide.id)+1) %></i>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="like_btn">
+					<button type="submit" class="btn btn-success btn_margin"><span class="glyphicon glyphicon-thumbs-up"></span> Like</button>
+				</div>
+				<div class="likers">
+					<h5 class="likers_">X People like this PDF</h5>
+				</div>
+			</div>
+			<div class="row ">
+    			<div class="col-md-1"></div>
+    			<div class="col-md-6 row_">
+					<div class="widget-area no-padding blank">
+						<div class="status-upload">
+							<div>
+								<% if ( @comments != nil )  %>
+  								<% @comments.each do |comment| %>  
+								  <% if (comment.commentable_id == @slide.id) %>
+								    <li>  
+								     
+								    <% if (comment.user_id == nil) %>
+								        <strong>Commentor:</strong> Ananonumys
+								    <% else %>
+								        <strong>Commentor:</strong><%= User.find_by_id(comment.user_id ).first_name %>
+								    <% end %>
+								        <br><%= comment.comment %>
+								    <%end%>
+								    
+								<%end %>    
+								        
+								    
+								    </li>  
+								  <% end %>  
+								</ul>  
+								
+								<textarea placeholder="Write your comment here" >
+									<%= form_tag(controller: "comments", id: "#{@slide.id}", action:"create", method: "POST")  do %>
+								  <ul class="formList">  
+								    <li>  
+								      <%= label_tag :comment %>  
+								      <%= text_area_tag :comment %>  
+								    </li>
+								    <li><%= submit_tag "Add comment" %></li>  
+								  </ul>  
+									
+								</textarea>
+								<% end %>
+								<button type="submit" class="btn btn-sm btn-success">Comment</button>
+							</div>
+						</div>
+					</div>
+				</div>
+    		</div>
+    		</div>
+		  	 <div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">Click on Contact Us button xD</div>
+						<div class="panel-body">This Website is made by Shabab el CSE - Faculty of Engineering Ainshams University
+						<a href="http://imgur.com/REoYL9j" class="btn btn-sm btn-danger pull-right">Contact Us</a>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

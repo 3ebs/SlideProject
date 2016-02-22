@@ -53,6 +53,7 @@
 }
 
 body {
+    position: relative;
     padding-top: 80px;
     font-family: 'Josefin Sans', sans-serif;
     background-color: #f2f2f2;
@@ -74,8 +75,23 @@ IMG.displayed {
 }
 
 
-td:hover {
+.tttd:hover {
   background-color: gray;
   color: #000000;
   border-radius: 5px;
+}
+
+.3ebs{
+    min-height:70vh;
+    
+}
+
+.last-child {
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+}
+.panel_ {
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
 }

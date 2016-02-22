@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uploader:</strong><%= User.find_by_id(@uploads.user_id).first_name%><br>
+ <% @vaa= Slide.all%>
+  
+
+  <% @slides.each do |slide| %>
+      <%if slide.upload_id== @uploads.id %>
+       <%= image_tag "#{slide.url} "%><br>
+       <%= link_to 'show',  preview_path(slide.id) %><br>
+      <%end%>
+   <%end%>
+  <br><Br><br><br><br>
+ 
+  
+</p>
+  
+
+<%= link_to 'Back', uploads_path %>

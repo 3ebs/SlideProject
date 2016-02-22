@@ -74,7 +74,7 @@ IMG.displayed {
 }
 
 .pdf_border {
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .row_border {
@@ -95,5 +95,7 @@ IMG.displayed {
     border-left: 1px solid white;
 }
 .panel_ {
+    margin-top: 10px;
     position: relative;
+    width: 100%;
 }

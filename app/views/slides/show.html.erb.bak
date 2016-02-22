@@ -1,0 +1,53 @@
+            <h2>image preview</h2>
+       <%= link_to 'previous',  preview_path((@slide.id)-1) %><br>
+       <%= image_tag "#{@slide.url} "%>
+      <%= link_to 'next',  preview_path((@slide.id)+1) %><br>
+<h3></h3>
+<%= #form_tag(controller: "like", id: "#{@slide.id}",user_id: "#{session[:user_id]}", action:"like", method: "POST")  do
+%>
+
+    <%=# submit_tag "like" 
+    %>  
+    
+<% #end
+%>
+
+
+
+
+<h1>Comments</h1>  
+
+<ul id="comments">  
+<% if ( @comments != nil )  %>
+  <% @comments.each do |comment| %>  
+  <% if (comment.commentable_id == @slide.id) %>
+    <li>  
+     
+    <% if (comment.user_id == nil) %>
+        <strong>Commentor:</strong> Ananonumys
+    <% else %>
+        <strong>Commentor:</strong><%= User.find_by_id(comment.user_id ).first_name %>
+    <% end %>
+    
+        <br><%=comment.title %>
+        <br><%= comment.comment %>
+    <%end%>
+    
+<%end %>    
+        
+    
+    </li>  
+  <% end %>  
+</ul>  
+
+<h2>New Comment</h2>  
+
+<%= form_tag(controller: "comments", id: "#{@slide.id}", action:"create", method: "POST")  do %>
+  <ul class="formList">  
+    <li>  
+      <%= label_tag :comment %>  
+      <%= text_area_tag :comment %>  
+    </li>
+    <li><%= submit_tag "Add comment" %></li>  
+  </ul>  
+<% end %>

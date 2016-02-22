@@ -1,20 +1,67 @@
-<p id="notice"><%= notice %></p>
+<html>
+	<head>
+		<%= stylesheet_link_tag  'bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag  'bootstrap-theme.css', media: 'all', 'data-turbolinks-track' => true %>	
+		<%= stylesheet_link_tag  'p3.css', media: 'all', 'data-turbolinks-track' => true %>	
+		<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:700' rel='stylesheet' type='text/css'>
+		<title>PDF Viewer | FileName</title>
+	</head>
+	<body>
+		<p id="notice"><% notice %></p>
+		<div class="container">
+			<nav class="navbar navbar-inverse  navbar-fixed-top navbar-outer" role="navigation">
+					<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	  					<span class="icon-bar"></span>
+	  					<span class="icon-bar"></span>
+	  					<span class="icon-bar"></span>
+					</button>    
+					</div>
+					<div class="navbar-collapse collapse">
+	    			<ul class="nav navbar-nav navbar-left col-md-5">
+	        			<li><a href="/uploads"><img class="displayed" height="70" width="70" src="https://cdn4.iconfinder.com/data/icons/CS5/512/ACP_PDF%202_file_document.png" alt="WebSiteIcon"></a></li>
+	        			<li class="navbar_top_margin last-child"><a href="/uploads">PDF Viewer</a></li>
+	    			</ul>
 
-<p>
-  <strong>Uploader:</strong><%= User.find_by_id(@uploads.user_id).first_name%><br>
- <% @vaa= Slide.all%>
-  
 
-  <% @slides.each do |slide| %>
-      <%if slide.upload_id== @uploads.id %>
-       <%= image_tag "#{slide.url} "%><br>
-       <%= link_to 'show',  preview_path(slide.id) %><br>
-      <%end%>
-   <%end%>
-  <br><Br><br><br><br>
- 
-  
-</p>
-  
-
-<%= link_to 'Back', uploads_path %>
+	    			<div class="col-md-2">
+	  					<a href="<%= new_upload_path %>" class="btn btn-block btn-lg btn-success navbar_top_margin">Upload File</a>
+	  				</div>
+	    			<ul class="nav navbar-nav navbar-right col-md-5">
+	    				<li class="navbar-right"><%= link_to "Log out", logout_path, method: "delete" %></li>
+	      				<li class="navbar-right last-child"><a href="#accountdetails"><%= session[:first_name] %></a></li>
+	    			</ul>
+	    		</div>
+			</nav>
+			<div class="table-responsive">
+				<div class="table table-borderless">
+					
+					<div>
+						<% @slides.each do |slide| %>
+						<div class ="col-md-3 img_border tttd">
+							
+								<%if (slide.upload_id == @uploads.id) %>
+							<div>	
+								<a href="<%= preview_path(slide.id) %>">
+								<img class="displayed" height="165" width="165"src="<%= slide.url %>" alt="PDF">
+								</a>	
+							<%end%>
+  								
+							</div>
+						</div>
+						<%end%>
+					</div>
+					
+				</div>
+			</div>
+			<div class="panel-group">
+    			<div class="panel panel-default panel_">
+      				<div class="panel-heading">Click on Contact Us button xD</div>
+      				<div class="panel-body">This Website is made by Shabab el CSE - Faculty of Engineering Ainshams University
+      					<a href="http://imgur.com/REoYL9j" class="btn btn-sm btn-danger pull-right">Contact Us</a>	
+      				</div>
+    			</div>
+			</div>
+		</div>
+	</body>
+</html>
