@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+
+<%= stylesheet_link_tag  'bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag  'bootstrap-theme.css', media: 'all', 'data-turbolinks-track' => true %>	
+<%= stylesheet_link_tag  'p3.css', media: 'all', 'data-turbolinks-track' => true %>	
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  
+
+
+  <% @vaa= Slide.all%>
+  
+
+  <% @vaa.each do |slide| %>
+      <%if slide.upload_id== @upload.id %>
+       <%= image_tag "#{slide.url} "%>
+       <%= link_to 'show',  slide_path %>
+      <%end%>
+   <%end%>
+  <br><Br><br><br><br>
+ 
+</p>
+  <%= commontator_thread(@upload) 
+  %>
+
+<%= link_to 'Back', uploads_path %>
+
+</html>

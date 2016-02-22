@@ -37,10 +37,10 @@
 		<div class="table table-borderless">
 			<div>
 			  <% @uploads.each do |upload| %>
-        <% if(upload.user_id == session[:user_id])%>
+        	  <% if(upload.user_id == session[:user_id])%>
 				<div class ="col-md-3 pdf_border">
 					<img class="displayed" height="165" width="165"src="<%= upload.file %>0.jpg" alt="PDF">
-					<h4 class="pdf_name"><%= upload.file.file.filename  %></h4>
+					<h4 class="pdf_name"><%= upload.file.filename %></h4>
 					<div class="col-md-6 choice">
 					  <%= link_to 'Show',   view_path(upload.id)   ,class:"btn btn-default" %>
 					</div>
