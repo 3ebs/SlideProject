@@ -34,6 +34,6 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
+gem 'acts_as_commentable'
 gem 'commontator', '~> 4.11.1'
 gem 'acts_as_votable'

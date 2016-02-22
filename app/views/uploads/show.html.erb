@@ -9,7 +9,8 @@
 
   <% @vaa.each do |slide| %>
       <%if slide.upload_id== @upload.id %>
-        <%= image_tag "#{slide.url} "%>
+       <%= image_tag "#{slide.url} "%>
+       <%= link_to 'show',  slide_path %>
       <%end%>
    <%end%>
   <br><Br><br><br><br>

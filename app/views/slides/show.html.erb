@@ -1,0 +1,34 @@
+            <h2>image preview</h2>
+            
+       <%= image_tag "#{@slide.url} "%>
+  	
+<h1>Comments</h1>  
+
+<ul id="comments">  
+  <% @comments.each do |comment| %>  
+    <li>  
+    <strong>Commentor:</strong><%= #  User.find_by_id(comment.user_id).first_name
+    %><br>
+    
+        <%=comment.title %>
+    <br><%= comment.comment %>
+    
+    </li>  
+  <% end %>  
+</ul>  
+
+<h2>New Comment</h2>  
+
+<%= form_tag(controller: "comments", id: "#{@slide.id}", action:"create", method: "POST")  do %>
+  <ul class="formList">  
+    <li>  
+      <%= label_tag :title %>  
+      <%= text_field_tag :title %>  
+    </li>  
+    <li>  
+      <%= label_tag :comment %>  
+      <%= text_area_tag :comment, :rows => 5 %>  
+    </li>
+    <li><%= submit_tag "Add comment" %></li>  
+  </ul>  
+<% end %>

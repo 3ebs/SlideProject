@@ -43,7 +43,7 @@
 					<img class="displayed" height="165" width="165"src="<%= upload.file %>0.jpg" alt="PDF">
 					<h4 class="pdf_name"><%= upload.file.file.filename  %></h4>
 					<div class="col-md-6 choice">
-					  <%= link_to 'Show',  upload  ,class:"btn btn-default" %>
+					  <%= link_to 'Show',   view_path(upload.id)   ,class:"btn btn-default" %>
 					</div>
 					<div class="col-md-6 choice">
 					  

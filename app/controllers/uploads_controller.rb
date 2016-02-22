@@ -12,7 +12,7 @@ class UploadsController < ApplicationController
   # GET /uploads/1
   # GET /uploads/1.json
   def show
-     commontator_thread_show(@upload)
+      redirect_to '/uploads'
   end
 
   # GET /uploads/new
